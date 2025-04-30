@@ -1,1 +1,99 @@
-<h1>My Portfolio</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cig Cat</title>
+  <style>
+    #insta-link {
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-family: sans-serif;
+  text-decoration: none;
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+#insta-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+    body {
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    img {
+      width: 400px;
+      height: auto;
+    }
+    #buy-button {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  background-color: #222;
+  color: white;
+  border: 2px solid white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 18px;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+#buy-button:hover{
+  background-color: white;
+  color: black;
+  opacity: 1;
+}
+  </style>
+</head>
+<body>
+
+  <img id="catImage" src="cat-good.gif" alt="Cig Cat" />
+
+  <script>
+    const catImage = document.getElementById('catImage');
+
+    async function updateCat() {
+      try {
+        const response = await fetch('https://api.coingecko.com/api/v3/coins/ethereum');
+        const data = await response.json();
+        const priceChange = data.market_data.price_change_percentage_24h;
+
+        if (priceChange <= -5) {
+          catImage.src = 'cat-really-bad.gif';
+        } else if (priceChange < 0) {
+          catImage.src = 'cat-bad.gif';
+        } else if (priceChange <= 5) {
+          catImage.src = 'cat-good.gif';
+        } else {
+          catImage.src = 'cat-really-good.gif';
+        }
+      } catch (error) {
+        console.error('Failed to fetch ETH price:', error);
+      }
+    }
+
+    updateCat();
+    setInterval(updateCat, 5000);
+  </script>
+<a href="https://www.instagram.com/cigcatmoney/?utm_source=ig_web_button_share_sheet" target="_blank" id="insta-link">
+  Instagram!
+</a>
+<a href="https://app.uniswap.org/#/swap?outputCurrency=0xYourTokenAddressHere" target="_blank" id="buy-button">
+  Buy $CIGCAT
+</a>
+
+</body>
+</html>

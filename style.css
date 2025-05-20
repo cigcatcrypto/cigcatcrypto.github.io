@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    width: 100%;
+    background: black;
+    overflow: hidden;
+    font-family: monospace;
+  }
+  
+  /* Navbar */
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 12px 0;
+    z-index: 10;
+    text-align: center;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar a:hover {
+    color: #00ffff;
+  }
+  
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  
+  .background {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Logo */
+  .logo {
+    max-width: 300px;
+    z-index: 3;
+    position: relative;
+  }
+  
+  /* Orbit Text */
+  .orbit-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    transform: translate(-50%, -50%);
+    animation: spin 30s linear infinite;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .orbit-svg text {
+    fill: white;
+    font-size: 25.5px;
+    font-family: monospace;
+    letter-spacing: 2px;
+  }
+  
+  /* Spin animation */
+  @keyframes spin {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  
+  /* Centered Page Content (About + Updates) */
+  .page-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 700px;
+    padding: 40px;
+    text-align: center;
+    z-index: 5;
+  }
+  
+  .page-content p {
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  
